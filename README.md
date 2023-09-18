@@ -1,2 +1,2 @@
 # javascript
-Above repo contains frontend project files.
+This repo contains frontend project files.
