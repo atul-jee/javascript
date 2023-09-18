@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			padding: 0%;
+			margin: 0%;
+			background: rgb(2,0,36);
+ background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(140,171,255,1) 34%, rgba(0,212,255,1) 100%);
+		}
+		.card{
+			display:flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height:100vh;
+			max-width:500px;
+			margin:3em auto;
+			background: rgb(180,174,238);
+background: radial-gradient(circle, rgba(180,174,238,1) 0%, rgba(159,213,235,1) 41%, rgba(148,187,233,1) 100%);
+			border: solid 3px white;
+			border-radius: 3px;
+
+		}
+		header{
+			font-weight:700;
+			font-size: 30px;
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			background-color:#8CABFF;
+			width: 100%;
+			height:10vh;
+			color:white;
+			padding:0.8em 0em;
+			margin-top:-30px;
+		}
+		.form-design{
+			margin:5px;
+			padding: 10px;
+			color: white;
+			font-weight: 300;
+			font-size:15px;
+		}
+		.form-design input{
+			width: 50%;
+			padding:0.3em 0.7em;
+		}
+		.form-design input{
+			min-width:100%;
+		}
+		.but{
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+
+		} 
+		.but input{
+			background-color: #8CABFF;
+			border-radius:10px;
+			border:solid 2px #4477CE;
+			padding:5px;
+		}
+		.but input:active {
+    background-color: #ffbf00;
+}
+	</style>
+</head>
+<body>
+	<div class="card">
+		
+	
+	<header id="header" class="">
+		Hello!
+	</header><!-- /header -->
+	<br>
+	<form name="myForm" onsubmit="return validateForm()">
+		<div class="form-design" id="name">
+			Name : <input type="text" name="fname" placeholder="Enter Your Full Name"><br><span style="color:red;" class="formerror"></span>
+		</div> 
+		<div class="form-design" id="email">
+			Email : <input type="email" name="email" placeholder="E-mail"><br><span style="color:red;" class="formerror"></span>
+		</div> 
+		<div class="form-design" id="phone">
+			Phone no. : <input type="text" name="phone" placeholder="Enter your phone number."><br><span class="formerror" style="color:red;"></span>
+		</div> 
+		<div class="form-design" id="pass">
+			Password : <input type="text" name="pass"  placeholder="Password"><br><span class="formerror" style="color:red;"></span>
+		</div> 
+		<div class="form-design" id="cpass">
+			Confirm Password : <input type="text" name="cpass" placeholder="Confirm password"><br><span class="formerror" style="color:red;"></span>
+		</div> 
+	<div class="but">
+		<input  value="Submit" type="Submit"
+		style="text-align:center">
+		</div>
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+	function clearError() {
+		/* body... */
+		err=document.getElementsByClassName('formerror');
+		for(let item of err){
+			item.innerHTML='';
+		}
+	}
+	function seterror(id,err){
+		try {
+			element=document.getElementById(id);
+		element.getElementsByClassName('formerror')[0].innerHTML=err;
+		} catch(e) {
+			// statements
+			console.log(e);
+		}
+	}
+	function validateForm () {
+		// body... 
+		let flag=true;
+		try {
+			// statements
+			clearError();
+			
+		
+		let name=document.forms['myForm']['fname'].value;
+		if (name.length<5)
+		{
+			seterror('name',' <sup>*Length of name is too short </sup>');
+			flag=false;
+		}
+		let email=document.forms['myForm']['email'].value;
+		if (email.length>30)
+		{
+			seterror('email',' <sup>*Length of email is too long </sup>');
+			flag=false;
+
+		}
+		let phone=document.forms['myForm']['phone'].value;
+		if (phone.length!==10)
+		{
+			seterror('phone',' <sup>*Digits must be 10</sup>');
+			flag=false;
+
+		}
+		let pass=document.forms['myForm']['pass'].value;
+		if (pass.length<8)
+		{
+			seterror('pass',' <sup>*Password should be atleast 6 character long</sup>');
+			flag=false;
+
+		}
+		let cpass=document.forms['myForm']['cpass'].value;
+		if (pass!==cpass)
+		{
+			seterror('cpass',' <sup>*Confirm password didn\'t match</sup>');
+			flag=false;
+
+		}
+		} catch(e) {
+			// statements
+			console.log(e);
+		}
+
+		return flag;
+	}
+</script>
+</html>
